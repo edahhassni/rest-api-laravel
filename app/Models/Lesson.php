@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Container\Attributes\Tag;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Lesson extends Model
 {
-    //
+        use HasFactory;
     protected $fillable = ['title', 'body', 'user_id'];
 
 
