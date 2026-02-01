@@ -26,7 +26,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('tag', TagController::class);
 
     // Relationships 
-    Route::get('user/{id}/lessons', [RelationController::class, 'UserLesson']);
+    Route::get('user/{id}/lessons', [RelationController::class, 'UserLessons']);
     Route::get('lesson/{id}/tags', [RelationController::class, 'LessonTags']);
     Route::get('tag/{id}/lessons', [RelationController::class, 'TagsLessons']);
 
