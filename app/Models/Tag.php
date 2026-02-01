@@ -11,7 +11,7 @@ class Tag extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function lesson()
+    public function lessons()
     {
         return $this->belongsToMany(Lesson::class, 'lesson_tags');
     }

@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Container\Attributes\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tag;
+use App\Models\User;
 
 class Lesson extends Model
 {
@@ -17,7 +18,7 @@ class Lesson extends Model
         return $this->belongsToMany(Tag::class, 'lesson_tags');
     }
     
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
