@@ -19,7 +19,7 @@ Route::get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function () {
 
     // CRUD Lesson
-    Route::apiResource('lessons', LessonController::class);
+    Route::apiResource('lesson', LessonController::class);
     // CRUD User
     Route::apiResource('user', UserController::class);
     // CRUD Tag

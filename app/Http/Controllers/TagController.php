@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TagResource;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        Tag::all();
+        $tag = TagResource::collection(Tag::all());
+        return $tag->response()->setStatusCode(200);
     }
 
     /**
@@ -20,7 +22,8 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        Tag::create($request->all());
+        $tag = new TagResource(Tag::create($request->all()));
+        return $tag->response()->setStatusCode(200, "Tag created successfully");
     }
 
     /**
@@ -28,7 +31,8 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        Tag::findOrFail($id);
+        $tag = new TagResource(Tag::findOrFail($id));
+        return $tag->response()->setStatusCode(200);
     }
 
     /**
@@ -36,8 +40,10 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->update($request->all());    }
+        $tag = new TagResource(Tag::findOrFail($id));
+        $tag->update($request->all());    
+        return $tag->response()->setStatusCode(200, "Tag updated successfully");
+    }
 
     /**
      * Remove the specified resource from storage.
